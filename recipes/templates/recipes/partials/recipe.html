@@ -1,7 +1,7 @@
 <div class="main-content main-content-list container">
     <div class="recipe recipe-list-item">
         <div class="recipe-cover">
-            <img src="https://via.placeholder.com/1280x720.png" alt="temps">
+            <img src="{{ recipe.cover.url }}" alt="temps">
         </div>
         <div class="recipe-title-container">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
@@ -24,7 +24,11 @@
         </div>
 
         <div class="recipe-content">
-            <p>{{ recipe.description }}</p>
+            {% if not is_detail_page %}
+                <p>{{ recipe.description }}</p>
+            {% else %}
+                <p>{{ recipe.preparation_steps }}</p>
+            {% endif %}
         </div>
 
         <div class="recipe-meta-container">
@@ -42,12 +46,15 @@
             </div>
         </div>
 
-        <footer class="recipe-footer">
-            <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
-                <i class="fas fa-eye"></i>
-                <span>ver mais...</span>
-            </a>
-        </footer>
+        {% if is_detail_page is not True %}
+            <footer class="recipe-footer">
+                <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
+                    <i class="fas fa-eye"></i>
+                    <span>ver mais...</span>
+                </a>
+            </footer>
+        {% endif %}
+        
 
     </div>
 </div>
