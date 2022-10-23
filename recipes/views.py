@@ -6,5 +6,5 @@ def home(request):
     return render(request, "recipes/pages/home.html", context={"name": "Danilo"})
 
 
-def contato(request):
-    return HttpResponse("CONTATO")
+def recipe(request, pk):
+    return render(request, "recipes/pages/recipe-view.html", context={"name": "Danilo"})
