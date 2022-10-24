@@ -6,7 +6,7 @@ def home(request):
     return render(
         request,
         "recipes/pages/home.html",
-        context={"recipes": [make_recipe() for _ in range(10)]},
+        context={"recipes": [make_recipe() for _ in range(9)]},
     )
 
 
