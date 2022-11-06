@@ -39,8 +39,7 @@ def category(request, category_id):
 
 
 def recipe(request, pk):
-    recipe = Recipe.objects.get(id=pk)
-    print(recipe)
+    recipe = get_object_or_404(Recipe, pk=pk, is_published=True)
     return render(
         request,
         "recipes/pages/recipe-view.html",

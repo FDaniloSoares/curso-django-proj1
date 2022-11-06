@@ -39,7 +39,11 @@
             {% if not is_detail_page %}
                 <p>{{ recipe.description }}</p>
             {% else %}
-                <p>{{ recipe.preparation_steps }}</p>
+                {% if recipe.preparation_steps_is_html is True %}
+                    <div class="preparation-steps" >{{ recipe.preparation_steps | safe }}</div>
+                {% else %}
+                    <div class="preparation-steps" >{{ recipe.preparation_steps | linebreaksbr }}</div>
+                {% endif %}
             {% endif %}
         </div>
 
